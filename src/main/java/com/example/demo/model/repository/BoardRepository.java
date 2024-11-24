@@ -7,6 +7,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 @Repository
-public interface BlogRepository extends JpaRepository<Board, Long>{
+public interface BoardRepository extends JpaRepository<Board, Long>{
+    // List<Article> findAll();
     Page<Board> findByTitleContainingIgnoreCase(String title, Pageable pageable);
 }

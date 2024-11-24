@@ -57,9 +57,10 @@
              <a href="#about" class="nav-item nav-link">소개</a>
              <a href="#skill" class="nav-item nav-link">기술 & 경험</a>
          </div>
-         <a href="/article_list" class="navbar-brand bg-secondary py-3 px-4 mx-3 d-none d-lg-block" target="_blank">
+         <a href="/board_list" class="navbar-brand bg-secondary py-3 px-4 mx-3 d-none d-lg-block" target="_blank">
             <h1 class="text-primary fw-bold m-0">게시판</h1>
         </a>
+            
             <div class="navbar-nav me-auto py-0">
                 <a href="#project" class="nav-item nav-link">프로젝트</a>
                 <a href="#team" class="nav-item nav-link">팀원</a>
@@ -303,18 +304,18 @@
 
 
 
-    <!-- Projects Start -->
+   <!-- Projects Start -->
     <div class="container-xxl py-6 pt-5" id="project">
         <div class="container">
             <div class="row g-5 mb-5 align-items-center wow fadeInUp" data-wow-delay="0.1s">
                 <div class="col-lg-6">
-                    <h1 class="display-5 mb-0">프로젝트</h1>
+                    <h1 class="display-5 mb-0">나의 프로젝트</h1>
                 </div>
                 <div class="col-lg-6 text-lg-end">
                     <ul class="list-inline mx-n3 mb-0" id="portfolio-flters">
-                        <li class="mx-3 active" data-filter="*">모든 프로젝트</li>
-                        <li class="mx-3" data-filter=".first">UI/UX Design</li>
-                        <li class="mx-3" data-filter=".second">Graphic Design</li>
+                        <li class="mx-3 active" data-filter="*">전체 프로젝트</li>
+                        <li class="mx-3" data-filter=".first">졸업 작품</li>
+                        <li class="mx-3" data-filter=".second">개인 개발</li>
                     </ul>
                 </div>
             </div>
@@ -535,6 +536,24 @@
         </div>
     </div>
     <!-- Copyright End -->
+    <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center">
+        <li class="page-item" th:classappend="${currentPage == 0} ? 'disabled'">
+        <a class="page-link" th:href="@{/board_list(page=${currentPage - 1}, keyword=${keyword})}" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+        </a>
+        </li>
+        <li class="page-item" th:each="i : ${#numbers.sequence(0, totalPages - 1)}"
+        th:classappend="${i == currentPage} ? 'active'">
+        <a class="page-link" th:href="@{/board_list(page=${i}, keyword=${keyword})}" th:text="${i + 1}">1</a>
+        </li>
+        <li class="page-item" th:classappend="${currentPage + 1 >= totalPages} ? 'disabled'">
+        <a class="page-link" th:href="@{/board_list(page=${currentPage + 1}, keyword=${keyword})}" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+        </a>
+        </li>
+        </ul>
+        </nav>
 
 
     <!-- Back to Top -->
