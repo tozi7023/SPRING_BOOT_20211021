@@ -43,7 +43,8 @@ public String board_list(Model model, @RequestParam(defaultValue = "0") int page
     
     if (keyword.isEmpty()) {
         list = blogService.findAll(pageable); // 기본 전체 출력(키워드 x)
-    } else {
+    } 
+    else {
         list = blogService.searchByKeyword(keyword, pageable); // 키워드로 검색
     }
     model.addAttribute("boards", list); // 모델에 추가
